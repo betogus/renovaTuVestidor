@@ -21,5 +21,17 @@ export const styles = {
         fontSize: "24",
         color:"green",
         textAlign: "center"
+    },
+    cart: {
+        width: 25,
+        height: 25
+    },
+    cartContainer: {
+        width: 50,
+        height: 50,
+        borderRadius: "50%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
     }
 }
