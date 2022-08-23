@@ -3,7 +3,7 @@ import "./style.css";
 import NavBar from "./components/navBar/NavBar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {styles} from './components/Jss'
-import itemListContainer from "./components/itemListContainer/itemListContainer";
+import ItemListContainer from "./components/itemListContainer/ItemListContainer";
 
 // la forma en que se hacia antes:
 class App extends React.Component {
@@ -14,8 +14,8 @@ class App extends React.Component {
       <div>
                 <NavBar />
         <h1 style={styles.titulo}>Renová tu vestidor</h1>
-        <itemListContainer
-        greeting = "Bienvenido a nuestra tienda online" />
+        <ItemListContainer
+        greeting = {"Bienvenido a nuestra tienda online"} />
 
       </div>
       // para evitar envolver nuestro codigo en un div, podemos usar <React.Fragment></React.Fragment> o incluso de esta manera: <> </>

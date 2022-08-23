@@ -1,7 +1,7 @@
-function itemListContainer (prop) {
+function ItemListContainer (props) {
     return (
-        <p style={{color: "blue", fontSize: 28}}>{prop.greeting}</p>
+        <p className="fs-1 text-center" style={{color: "blue"}}>{props.greeting}</p>
     )
 }
 
-export default itemListContainer
+export default ItemListContainer
