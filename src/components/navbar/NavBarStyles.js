@@ -16,10 +16,7 @@ export const styles = {
         height: "100%",
         objectFit: "contain",
         borderRadius: "1rem",
-    },
-    titulo: {
-        fontSize: "24",
-        color:"green",
-        textAlign: "center"
     }
+
+    
 }
