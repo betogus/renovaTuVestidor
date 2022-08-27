@@ -1,10 +1,9 @@
 import React from 'react'
 import {styles} from './CardComponentStyle';
-
+import ItemCount from '../itemCount/ItemCount';
+import {usuarios} from "../../../baseDeDatos/BaseDeDatos"
 
 const CardComponent = (props) => {
-
-    
   return (
     <div style={styles.cardContainer}>
         <header className='d-flex align-items-end my-1'>
@@ -24,10 +23,16 @@ const CardComponent = (props) => {
                 <p className='text-center my-1' style={{color: "orange", fontSize: "25px"}}><b>${props.user.clothes[0].price}</b></p>
                 <p className='text-center my-1'>Talle {props.user.clothes[0].size}</p>
             </div>
-            <div>
-
-            </div>
-
+            <ItemCount
+                user = {
+                    { 
+                    clothes: [{
+                        stock: `${usuarios.usuario1.clothes[0].stock}`
+                    }]
+                    }
+                }
+            
+            />
         </footer>
     </div>
   )

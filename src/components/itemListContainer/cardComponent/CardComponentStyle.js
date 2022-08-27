@@ -2,7 +2,7 @@ export const styles = {
     cardContainer: {
         width: "254px",
         height: "510px",
-        background: "#f42",
+        background: "rgb(244,201,175)",
         borderRadius: "5px",
         padding: 10,
         margin: 10
@@ -16,5 +16,6 @@ export const styles = {
         objectFit: "contain",
         maxWidth: "98%"
     }
+    
 
 }
