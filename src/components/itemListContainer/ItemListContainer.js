@@ -1,26 +1,10 @@
-import CardComponent from "./cardComponent/CardComponent";
-import { usuarios } from "../../baseDeDatos/BaseDeDatos";
+import ItemList from "./itemList/ItemList";
 
 
-
-function ItemListContainer (props) {
+function ItemListContainer () {
     return (
-        <div className="d-flex">
-          <CardComponent 
-            user = {
-              {
-                logo :`${usuarios.usuario1.logo}`,
-                name : `${usuarios.usuario1.name}`,
-                clothes: [{
-                  img : `${usuarios.usuario1.clothes[0].img}`,
-                  name : `${usuarios.usuario1.clothes[0].name}`,
-                  size : `${usuarios.usuario1.clothes[0].size}`,
-                  price: `${usuarios.usuario1.clothes[0].price}`,
-                  stock: `${usuarios.usuario1.clothes[0].stock}`
-                }]
-              }
-            }
-          />
+        <div>
+          <ItemList/>
       </div>
     )
 }
