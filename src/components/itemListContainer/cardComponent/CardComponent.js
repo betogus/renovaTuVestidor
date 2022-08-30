@@ -27,8 +27,13 @@ const CardComponent = (props) => {
                 user = {
                     { 
                     clothes: [{
-                        stock: `${usuarios.usuario1.clothes[0].stock}`
-                    }]
+                        stock: `${usuarios.usuario1.clothes[0].stock}`,
+                        initial: 0,
+                        onAdd: (counter, initial, stock) => {
+                                console.log(`Hay ${initial} productos en tu carrito. Se añadieron ${counter}. Stock: ${stock-counter}`);
+                            }
+                            
+                        }]
                     }
                 }
             

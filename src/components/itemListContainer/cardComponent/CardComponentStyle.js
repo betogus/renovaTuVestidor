@@ -1,7 +1,7 @@
 export const styles = {
     cardContainer: {
         width: "254px",
-        height: "510px",
+        height: "550px",
         background: "rgb(244,201,175)",
         borderRadius: "5px",
         padding: 10,
