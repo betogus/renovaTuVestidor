@@ -9,7 +9,8 @@ import Typography from '@mui/material/Typography';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
-import {styles} from './itemStyle'
+import {styles} from './itemStyle';
+
 
 export default function CardComponent({data}) {
   const theme = useTheme();
