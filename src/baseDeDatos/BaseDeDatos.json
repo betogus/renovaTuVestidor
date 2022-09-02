@@ -1,0 +1,42 @@
+[{
+    "logo": "https://argentina-media.renuevatucloset.com/user/0003/86/thumb_285895_user_small.jpeg",
+    "name" : "RockAndLove",
+    "clothes": 
+        [{
+            "img": "https://argentina-media.renuevatucloset.com/product/0135/13/thumb_13412319_product_medium.jpeg",
+            "name": "Anteojos",
+            "size": "Único",
+            "price": 1890,
+            "stock": 1
+        },
+        {
+            "img": "https://argentina-media.renuevatucloset.com/product/0135/20/thumb_13419916_product_medium.jpeg",
+            "name": "Pollera Stradivarius",
+            "size": "L",
+            "price": 8900,
+            "stock": 9
+        }
+        ]
+    
+},
+{
+    "logo": "https://argentina-media.renuevatucloset.com/user/0126/39/thumb_12538277_user_small.png",
+    "name" : "andreita22",
+    "clothes": 
+        [{
+            "img": "https://argentina-media.renuevatucloset.com/product/0135/13/thumb_13412231_product_medium.jpeg",
+            "name": "Calzado Mimo & Co.",
+            "size": 31,
+            "price": 3120,
+            "stock": 12
+        },
+        {
+            "img": "https://argentina-media.renuevatucloset.com/product/0135/13/thumb_13412300_product_medium.jpeg",
+            "name": "Sweater",
+            "size": "Único",
+            "price": 5530,
+            "stock": 1
+        }
+        ]
+}
+]

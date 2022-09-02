@@ -1,4 +1,4 @@
-import CardComponent from "./cardComponent/CardComponent";
+import Item from "./Item/Item";
 import { usuarios } from "../../baseDeDatos/BaseDeDatos";
 
 
@@ -6,7 +6,7 @@ import { usuarios } from "../../baseDeDatos/BaseDeDatos";
 function ItemListContainer (props) {
     return (
         <div className="d-flex">
-          <CardComponent 
+          <Item 
             user = {
               {
                 logo :`${usuarios.usuario1.logo}`,

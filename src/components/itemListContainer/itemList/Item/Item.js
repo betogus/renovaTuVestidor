@@ -1,9 +1,9 @@
 import React from 'react'
-import {styles} from './CardComponentStyle';
+import {styles} from './ItemStyle';
 import ItemCount from '../itemCount/ItemCount';
 import {usuarios} from "../../../baseDeDatos/BaseDeDatos"
 
-const CardComponent = (props) => {
+const Item = (props) => {
   return (
     <div style={styles.cardContainer}>
         <header className='d-flex align-items-end my-1'>
@@ -43,4 +43,4 @@ const CardComponent = (props) => {
   )
 }
 
-export default CardComponent
+export default Item
