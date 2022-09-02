@@ -22,3 +22,15 @@ const ItemListContainer = () => {
 }
 
 export default ItemListContainer
+
+/* 
+en vez de usar fetch, podemos instalar axios y hacer lo siguiente:
+
+import axios from "axios"
+
+useEffect(() => { 
+    setTimeout(()=> {
+axios.get ('https://jsonplaceholder.typicode.com/photos').then(res) => console.log(res.data)
+ },2000)
+  }, []) 
+*/

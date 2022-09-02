@@ -62,3 +62,13 @@ const ItemCount = (props) => {
     cada vez que llamemos a counter, debemos usar this.counter
     
     */
+
+    5) en vez de usar fetch, podemos instalar axios y hacer lo siguiente:
+
+import axios from "axios"
+
+useEffect(() => { 
+    setTimeout(()=> {
+axios.get ('https://jsonplaceholder.typicode.com/photos').then(res) => console.log(res.data)
+ },2000)
+  }, []) 
