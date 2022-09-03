@@ -44,7 +44,7 @@ const ItemCount = (props) => {
 
     /* podemos usar el componente clase en lugar de funcion de la siguiente manera:
     
-    class CardComponent extends Component {
+    class Item extends Component {
         constructor () {
             super ();
             this.state = {
@@ -62,3 +62,15 @@ const ItemCount = (props) => {
     cada vez que llamemos a counter, debemos usar this.counter
     
     */
+
+    5) en vez de usar fetch, podemos instalar axios y hacer lo siguiente:
+
+import axios from "axios"
+
+useEffect(() => { 
+    setTimeout(()=> {
+axios.get ('https://jsonplaceholder.typicode.com/photos').then(res) => console.log(res.data)
+ },2000)
+  }, []) 
+
+  para evitar tanto codigo podemos usar React Query
