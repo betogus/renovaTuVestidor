@@ -5,7 +5,6 @@ import React, {useState, useEffect} from "react";
 
 
 const ItemListContainer = () => {
-    console.log(process.env)
   const [items, setItems] = useState([]); //Creamos un array donde luego lo cargamos con info
     useEffect(() => { // al momento de renderizar, el useEffect se dispara
     setTimeout(()=> {
@@ -15,10 +14,13 @@ const ItemListContainer = () => {
     },2000)
   }, []) // Traemos de la api los users y los cargamos en el array
 
+  
   return (
     
         <div className="d-flex">
-          <ItemList items = {items}/>
+          <ItemList 
+          items = {items}
+          />
       </div>
     )
 }

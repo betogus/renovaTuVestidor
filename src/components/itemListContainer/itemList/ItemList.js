@@ -9,7 +9,7 @@ const ItemList = (props) => {
                 return (
                     <Item 
                     key = {item.id} //si no tiene id, puedo pasarle el idx
-                    data = {item}
+                    data = {item}    
                     />
                 )
         })

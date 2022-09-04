@@ -5,6 +5,7 @@
         "size": "Único",
         "price": 1890,
         "stock": 1,
+        "detail": "lentes de sol importados. nuevos con protección uv. modelo steampunk. se envían con nuestra eco funda de lino personalizada que sirve para transportar y proteger. rockandclothesrock",
         "user": {
             "logo": "https://argentina-media.renuevatucloset.com/user/0003/86/thumb_285895_user_small.jpeg",
             "name" : "RockAndLove" 
@@ -16,6 +17,7 @@
         "size": "L",
         "price": 8900,
         "stock": 9,
+        "detail": "pollera de jean importada, nueva con etiqueta de la marca. talle 42, tiro alto, demin rígido, botones en el frente, costuras en color marrón.",
         "user": {
             "logo": "https://argentina-media.renuevatucloset.com/user/0003/86/thumb_285895_user_small.jpeg",
             "name" : "RockAndLove" 
@@ -29,6 +31,7 @@
         "size": 31,
         "price": 3120,
         "stock": 12,
+        "detail": "guillerminas con pulsera con abrojo, nuevas con caja y etiqueta",
         "user": {
             "logo": "https://argentina-media.renuevatucloset.com/user/0126/39/thumb_12538277_user_small.png",
             "name" : "andreita22"
@@ -40,6 +43,7 @@
         "size": "Único",
         "price": 5530,
         "stock": 1,
+        "detail": "sweater rayado oliva y natural, marca moka knit, nuevo, axila a axila 50 cm, largo 51 cm",
         "user": {
             "logo": "https://argentina-media.renuevatucloset.com/user/0126/39/thumb_12538277_user_small.png",
             "name" : "andreita22"
