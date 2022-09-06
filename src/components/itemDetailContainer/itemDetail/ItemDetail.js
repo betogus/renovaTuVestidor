@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const ItemDetail = ({item}) => {
     return (
+        
         <div className='container text-center'>
             <div className='row'>
                 <div className='col-sm-6'>

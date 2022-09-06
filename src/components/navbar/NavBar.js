@@ -6,23 +6,23 @@ import Button from 'react-bootstrap/Button';
 import { styles } from './NavBarStyles';
 import CartWidget from './CartWidget';
 
+import {Link} from "react-router-dom";
 
 const NavBar = () => {
   return (
     <>
       <Navbar bg="black" variant="dark">
+        <Link to="/" style={styles.link}>
       <div style={styles.logoContainer} href="#home"><img src={Logo} style={styles.logo} alt="logo"></img></div>
-
+      </Link>
         <Container>
           <Nav className="d-flex justify-content-between w-100 align-items-center">
-            <Nav.Link href="#mujeres">Mujeres</Nav.Link>
-            <Nav.Link href="#kids">Kids</Nav.Link>
-            <Nav.Link href="#marcas">Marcas</Nav.Link>
-            <Nav.Link href="#vestidores">Vestidores</Nav.Link>
-            <Nav.Link href="#showrooms">Showrooms</Nav.Link>
-            <Nav.Link href="#promos">Promos</Nav.Link>
-            <Nav.Link href="#vender"> <Button variant="danger">VENDER</Button>{''}</Nav.Link>
-            <Nav.Link href="#ingresa"> <Button variant="danger">INGRESÁ</Button>{''}</Nav.Link>
+            <Link to="/category/adulto" style={styles.link}>Adulto</Link>
+            <Link to="/category/kids" style={styles.link}>Kids</Link>
+            <Link to="/category/accesorios" style={styles.link}>Accesorios</Link>
+            
+             <Button variant="danger">VENDER</Button>{''}
+             <Button variant="danger">INGRESÁ</Button>{''}
             <CartWidget/>
 
           </Nav>

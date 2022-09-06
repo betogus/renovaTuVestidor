@@ -30,6 +30,10 @@ export const styles = {
         width: 25,
         height: 25
 
+    },
+    link: {
+        textDecoration: "none",
+        color: "white"
     }
 
     
