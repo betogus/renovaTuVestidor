@@ -1,33 +1,14 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {styles} from './ItemStyle';
-import ItemCount from '../../itemCount/ItemCount';
+
 import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2'
+
 
 const Item = ({item}) => {
 
-  const [initial, setInitial] = useState(0)
-  const [stock, setStock] = useState(item.stock)
-  const [counter, setCounter] = useState(initial)
-  
- 
-  
-
-  const onAdd = (counter, stock, initial) => {
-          Swal.fire(
-            'Se ha añadido el producto al carrito',
-            `Hay ${initial} productos en tu carrito. Se añadieron ${counter}. Stock: ${stock-counter}`,
-            'success'
-          )
-    setInitial(0);
-    setStock (stock - counter);
-    setCounter(0)
-}
-
     return (
         
-
-            <div style={styles.cardContainer} data-aos="fade-up">
+            <div style={styles.cardContainer}>
                 <header className='d-flex align-items-end my-1'>
                     <div>
                         <img src={item.user.logo} alt="usuario" style={styles.logo}></img>
@@ -47,13 +28,6 @@ const Item = ({item}) => {
                         <p className='text-center my-1' style={{color: "orange", fontSize: "25px"}}><b>${item.price}</b></p>
                         <p className='text-center my-1'>Talle {item.size}</p>
                     </div>
-                    <ItemCount
-
-                                stock = {stock}
-                                initial = {initial}
-                                onAdd = {onAdd}
-
-                    />
                 </footer>
                 </div>
        

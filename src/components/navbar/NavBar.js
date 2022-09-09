@@ -1,3 +1,4 @@
+import React, {useState} from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -5,10 +6,33 @@ import Logo from './logo.png';
 import Button from 'react-bootstrap/Button';
 import { styles } from './NavBarStyles';
 import CartWidget from './CartWidget';
-
+import Form from '../form/Form'
 import {Link} from "react-router-dom";
 
+
+
 const NavBar = () => {
+
+  //Para la busqueda: 
+  const [search, setSearch] = useState()
+  const [searchInput, setSearchInput] = useState();
+
+    const onChange = (e) => {
+        setSearch(e.target.value);
+        console.log(search)
+        setSearchInput(search.toLowerCase().replace(/ /g, ''))
+        console.log(searchInput)
+        
+    }
+
+    const onClick = (e) => {
+            e.preventDefault()
+            setSearch('');
+   
+        }
+
+
+    
   return (
     <>
       <Navbar bg="black" variant="dark">
@@ -16,6 +40,13 @@ const NavBar = () => {
       <div style={styles.logoContainer} href="#home"><img src={Logo} style={styles.logo} alt="logo"></img></div>
       </Link>
         <Container>
+          
+          <Form 
+          onChange = {onChange}
+          onClick = {onClick}
+          searchInput= {searchInput}
+          value={search}
+          />
           <Nav className="d-flex justify-content-between w-100 align-items-center">
             <Link to="/category/adulto" style={styles.link}>Adulto</Link>
             <Link to="/category/kids" style={styles.link}>Kids</Link>

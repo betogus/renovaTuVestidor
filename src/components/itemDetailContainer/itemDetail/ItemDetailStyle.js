@@ -24,5 +24,9 @@ export const styles = {
         color: "white",
         fontSize: 20,
         marginTop: "10px"
+    }, 
+    link: {
+        color: "white",
+        textDecoration: "none"
     }
 }

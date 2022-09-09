@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom"; //esto me permite asignarle a una 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]); //Creamos un array donde luego lo cargamos con info
   const [isLoading, setIsLoading] = useState(false) //esto es para el spinner
-  let {categoryId} = useParams();
+  let {categoryId, nameId} = useParams();
 
 
 
@@ -22,7 +22,15 @@ const ItemListContainer = () => {
       .then((data) => setItems(data))
       setIsLoading(false)
       },1000)
-    } else {
+    } else if (nameId) {
+      setTimeout(()=> {
+        fetch(`${process.env.REACT_APP_API_KEY}?name=${nameId}`)
+      .then((response) => response.json())
+      .then((data) => setItems(data))
+      console.log(nameId)
+      setIsLoading(false)
+    }, 1000)
+  }  else {
       setTimeout(()=> {
         fetch(`${process.env.REACT_APP_API_KEY}`)
       .then((response) => response.json())
@@ -31,7 +39,7 @@ const ItemListContainer = () => {
       },1000)
     }
 
-  }, [categoryId]) // Traemos de la api los users y los cargamos en el array
+  }, [categoryId, nameId]) // Traemos de la api los users y los cargamos en el array
 
   
   return (
