@@ -19,10 +19,7 @@ const NavBar = () => {
 
     const onChange = (e) => {
         setSearch(e.target.value);
-        console.log(search)
-        setSearchInput(search.toLowerCase().replace(/ /g, ''))
-        console.log(searchInput)
-        
+        setSearchInput(search.toLowerCase().replace(/ /g, ''))  
     }
 
     const onClick = (e) => {

@@ -1,17 +1,19 @@
 import {styles} from './ItemDetailStyle';
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
 import ItemCount from '../../itemCount/ItemCount';
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom';
+//import { CartContext } from '../../../itemsContext';
 
 
 const ItemDetail = ({item}) => {
     
+    //const {addProduct} = useContext(CartContext)
     const [initial, setInitial] = useState(0)
     const [stock, setStock] = useState(item.stock)
     const [counter, setCounter] = useState(initial)
-    const [cart, setCart] = useState(false)
+    const [cart, setCart] = useState()
 
     const onAdd = (counter, stock, initial) => {
         Swal.fire(
@@ -22,7 +24,7 @@ const ItemDetail = ({item}) => {
     setInitial(+counter)
     setStock (stock - counter);
     setCounter(0)
-    setCart(true)
+    //setCart(addProduct(item, quanity))
 }
 
     return (

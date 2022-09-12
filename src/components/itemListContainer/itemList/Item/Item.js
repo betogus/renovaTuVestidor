@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const Item = ({item}) => {
 
     return (
-        
+        <Link to={`/detail/${item.id}`} style={styles.link}>
             <div style={styles.cardContainer}>
                 <header className='d-flex align-items-end my-1'>
                     <div>
@@ -17,11 +17,11 @@ const Item = ({item}) => {
                         <p className='mx-4 my-1'><b>{item.user.name}</b></p>
                     </div>
                 </header>
-                <Link to={`/detail/${item.id}`} style={styles.link}>
+
                     <main>
                         <img src={item.img} alt="ropa" style={styles.imgClothes}></img>
                     </main>
-                </Link>
+       
                 <footer>
                     <div>
                         <p className='text-center fs-5 my-1'>{item.name}</p>
@@ -30,7 +30,7 @@ const Item = ({item}) => {
                     </div>
                 </footer>
                 </div>
-       
+        </Link>
     )
 }
 

@@ -4,20 +4,15 @@ import ItemDetail from "./itemDetail/ItemDetail"
 import Spinner from "../spinner/Spinner";
 import { useParams } from "react-router-dom"; //esto me permite asignarle a una variable, el id que le pasamos a itemDetailContainer desde el itemList
 
-const ItemDetailContainer = () => {
+const ItemDetailContainer = ({items, setItems, isLoading, setIsLoading}) => {
 
-  const [isLoading, setIsLoading] = useState(false) //esto es para el spinner
   const [item, setItem] = useState([]); 
   let {id} = useParams(); //desestructuramos la variable id para obtener directamente el número que recibimos del itemList
-    useEffect(() => { 
-      setIsLoading(true)
-    setTimeout(()=> {
-      fetch(`${process.env.REACT_APP_API_KEY}?id=${id}`)
-    .then((response) => response.json())
-    .then((data) => setItem(data))
+  //setTimeout(()=> {
+    setItem(items.filter(item => item.id === id))
     setIsLoading(false)
-    },2000)
-  }, [id])  //el useEffect se va a disparar cada vez que el id cambie
+    //},2000)
+  
 
   return (
     <div className="d-flex justify-content-center">
