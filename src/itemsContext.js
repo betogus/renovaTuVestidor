@@ -68,21 +68,14 @@ const initialState = [
 
 export const ItemsProvider = ({children}) => {
     const [items, setItems] = useState(initialState);
-    const [itemsSearched, setItemsSearched] = useState()
     
-    const getItems = (categoryId, nameId) => {
-      if (categoryId) {
-          setItemsSearched([items.filter(item => item.category === categoryId)])
-      } else if (nameId) {
-          setItemsSearched(items.filter(item => item.name.toLowerCase().includes(nameId)))
-      } else {
-          setItemsSearched(items)
-      }
-    }
+   
+      
+    
     // 3 - retornamos nuestro context con un .provider
 
     return (
-        <ItemsContext.Provider value={[items, setItems, itemsSearched, setItemsSearched, getItems]}>
+        <ItemsContext.Provider value={[items, setItems]}>
             {/* 4 - Dentro de ItemsContext.Provider pasamos los children*/}
             {children}
         </ItemsContext.Provider>

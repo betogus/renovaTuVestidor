@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 
 const Item = ({item}) => {
-
     return (
         <Link to={`/detail/${item.id}`} style={styles.link}>
             <div style={styles.cardContainer}>
@@ -29,7 +28,7 @@ const Item = ({item}) => {
                         <p className='text-center my-1'>Talle {item.size}</p>
                     </div>
                 </footer>
-                </div>
+            </div>
         </Link>
     )
 }

@@ -1,26 +1,40 @@
 import Item from './Item/Item';
 import { ItemsContext } from '../../../itemsContext';
 import Spinner from "../../spinner/Spinner";
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 
 
 
 
 const ItemList = ({categoryId, nameId}) => {
 
-    const [items, setItems, itemsSearched, setItemsSearched, getItems] = useContext(ItemsContext)
+    const [items, setItems] = useContext(ItemsContext)
     const [isLoading, setIsLoading] = useState(false)
-
-
-    getItems(categoryId, nameId)
-    console.log(itemsSearched)
+    const [ItemsSearched, setItemsSearched] = useState()
+    let itemsFiltered;
+    //useEffect(() => {
+        //setIsLoading(true)
+            //setTimeout(()=> {
+            if (categoryId) {
+                itemsFiltered = (items.filter(item => item.category === categoryId))
+                //setIsLoading(false)
+            } else if (nameId) {
+                itemsFiltered = (items.filter(item => item.name.toLowerCase().includes(nameId)))
+               // setIsLoading(false)
+            } else {
+                itemsFiltered = (items)
+                //setIsLoading(false)
+            }
+            
+        //}, 2000)
+        //setItemsSearched(itemsFiltered)
+    //}, [categoryId, nameId])
+    
 
     return (
         
-        <> {(isLoading) ? <Spinner/> :   itemsSearched.map((item) =>  {          /* en caso que no haya id para la key, ponemos ", idx" */
-            <Item   key={item.id} item={item}   />  /* si no tiene id, puedo pasarle el idx */
-        })
-            }
+        <> {(isLoading) ? <Spinner/> :   itemsFiltered.map((item) =>  <Item item={item} key={item.id}/>)}
+            
         </>
     )
 }
