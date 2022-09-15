@@ -21,7 +21,7 @@ const ItemDetailContainer = () => {
 
   return (
     <div className="d-flex justify-content-center">
-      { (isLoading) ? <Spinner/> : itemFiltered.map((product) => <ItemDetail item = {product} key={product.key} />)}
+      { (isLoading) ? <Spinner/> : itemFiltered.map((product) => <ItemDetail product = {product} key={product.key} />)}
     </div>
   )
 }

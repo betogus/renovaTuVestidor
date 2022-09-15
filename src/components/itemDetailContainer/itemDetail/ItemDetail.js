@@ -4,52 +4,63 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ItemCount from '../../itemCount/ItemCount';
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom';
-//import { CartContext } from '../../../itemsContext';
+import { CartContext } from '../../../cartContext/CartContext';
+import { ItemsContext } from '../../../itemsContext';
 
 
-const ItemDetail = ({item}) => {
+const ItemDetail = ({product}) => {
     
-    //const {addProduct} = useContext(CartContext)
+    const [cart, clear, isToCart, removeItem, addItem] = useContext(CartContext)
+    const [items, setItems, setItemStock] = useContext(ItemsContext)
     const [initial, setInitial] = useState(0)
-    const [stock, setStock] = useState(item.stock)
+    const [stock, setStock] = useState(product.stock)
     const [counter, setCounter] = useState(initial)
-    const [cart, setCart] = useState()
+    const [cartProduct, setCartProduct] = useState()
+
+
 
     const onAdd = (counter, stock, initial) => {
         Swal.fire(
           'Se ha añadido el producto al carrito',
-          `Hay ${initial} productos de ${item.name} en tu carrito. Se añadieron ${counter}. Stock: ${stock-counter}`,
+          `Se añadieron ${counter} productos de ${product.name} en tu carrito`,
           'success'
         )
-    setInitial(+counter)
-    setStock (stock - counter);
+    addItem(product, counter)
     setCounter(0)
-    //setCart(addProduct(item, quanity))
-}
+    }
 
     return (
         
         <div className='container text-center'>
             <div className='row'>
                 <div className='col-sm-6'>
-                    <img style={styles.img} src={item.img} alt="img"/>
+                    <img style={styles.img} src={product.img} alt="img"/>
                 </div>
                 
                 <div className='col-sm-6 text-center'>
-                    <h2><b>{item.name}</b></h2>
-                    <h2>$ {item.price}</h2>
-                    <h5>Talle {item.size}</h5>
-                    <p>{item.detail}</p>
+                    <h2><b>{product.name}</b></h2>
+                    <h2>$ {product.price}</h2>
+                    <h5>Talle {product.size}</h5>
+                    <p>{product.detail}</p>
                     <div className='d-flex justify-content-center'>
                         <button style={styles.button1}>Ofertar<FontAwesomeIcon icon="fa-sharp fa-solid fa-gavel" /></button>
                         <button style={styles.button1}>Comentar<FontAwesomeIcon icon="fa-regular fa-comment" /></button>
                     </div>
-                    {cart? <div><p className='text-center'>Cantidades agregadas al carrito: {initial}</p><Link to={`/cart/${item.id}`} style={styles.link}><button style={styles.button2}><b>IR AL CARRITO</b></button></Link></div> : 
+                    <div className="pb-3">
+        
+                        <p className='text-center'>Cantidades agregadas al carrito: {initial}</p>
+                        <Link to={`/cart`} style={styles.link}>
+                            <button style={styles.button2}>
+                                <b>IR AL CARRITO</b>
+                            </button>
+                            
+                        </Link>
+                    </div> 
                     <ItemCount
                         stock = {stock}
                         initial = {initial}
                         onAdd = {onAdd}
-                    />}
+                    />
                     
                 </div>
 

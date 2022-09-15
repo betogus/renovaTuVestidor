@@ -1,8 +1,7 @@
-import React, {createContext, useState, useEffect} from 'react';
+import React, {createContext, useState} from 'react';
 
 // 1 - Creamos el contexto y el state
 export const ItemsContext = createContext();
-//export const CartContext = createContext([])
 
 const initialState = [
     {
@@ -69,17 +68,23 @@ const initialState = [
 export const ItemsProvider = ({children}) => {
     const [items, setItems] = useState(initialState);
     
-   
+    const setItemStock = (id, quantity) => {
+        let originalItems = items.filter((item) => item.id !== id);
+        let itemModified = items.filter((item) => item.id === id)
+        itemModified.stock -= quantity;
+        originalItems.push(itemModified)
+        setItems(originalItems)  
+    }
       
     
     // 3 - retornamos nuestro context con un .provider
 
     return (
-        <ItemsContext.Provider value={[items, setItems]}>
+        <ItemsContext.Provider value={[items, setItems, setItemStock]}>
             {/* 4 - Dentro de ItemsContext.Provider pasamos los children*/}
             {children}
         </ItemsContext.Provider>
-    )
+)
 }
 
 // 5 - importamos nuestro High Order Component Provider (ItemsProvider) y envolvemos nuestra App
@@ -88,32 +93,3 @@ export const ItemsProvider = ({children}) => {
 
 // 7 - hacemos el paso 6 para cualquier componente que querramos pasarle esa info. 
 // Podemos hacer que al comprar, disminuya el stock en el ItemsContext.Provider usando setItems
-
-/* const CartProvider = ({children}) => {
-    const [cart, setCart] = useState([]);
-
-    const [clearCart, setClearCart] = () => setCart([])
-
-    const isToCart = (id) => cart.find(product => product.id === id ? true : false)
-
-    const removeProduct = (id) => setCart(cart.filter(product => product.id !== id))
-
-    const addProduct = (item, quantity) => {
-        let newCart; // creamos un carrito el cual luego se agregará al carrito original
-        let productInCart = cart.find(product => product.id === item.id)
-        if (productInCart) {
-            productInCart.quantity += quantity;
-             newCart = [...cart] //estamos creando un array con las mismas propiedades que el cart (nombre, cantidad, etc.)
-        } else {
-            productInCart = { ... item, quantity: quantity};
-             newCart = [ ...cart, productInCart]
-        }
-        setCart(newCart)
-    }
-
-    return (
-        <CartContext.Provider value={[cart, clearCart, isToCart, removeProduct, addProduct]}>
-            {children}
-        </CartContext.Provider>
-    )
-} */
