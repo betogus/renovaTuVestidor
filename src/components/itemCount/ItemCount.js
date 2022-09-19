@@ -11,6 +11,7 @@ const ItemCount = ({initial, stock, onAdd}) => {
         
     const handlerCounterDown = () => setCounter(counter-1) 
 
+  
 
 
   return (
@@ -24,7 +25,7 @@ const ItemCount = ({initial, stock, onAdd}) => {
         <span>{counter}</span>
         <Button disabled={counter >= stock} onClick={handlerCounterUp} className="mx-3">+</Button>
         </div>
-        <Button disabled={stock<=0 || counter === 0} onClick={()=>{onAdd(counter, stock, initial)}} className='my-2'>Agregar al carrito</Button>
+        <Button disabled={stock<=0 || counter === 0} onClick={()=>{onAdd(counter)}} className='my-2'>Agregar al carrito</Button>
  
         </ButtonGroup>
                    

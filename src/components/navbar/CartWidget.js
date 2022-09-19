@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { CartContext } from "../../cartContext/CartContext";
 
 function CartWidget () {
-    const {totalQuantity} = useContext(CartContext)
+    const [totalQuantity] = useContext(CartContext)
 
     return (
     <div className="bg-white" style={styles.cartContainer}>

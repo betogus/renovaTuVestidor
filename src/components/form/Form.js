@@ -8,7 +8,7 @@ const Form = (props) => {
     return (
         <form style={styles.form}>
             <div style={styles.container}>
-                <Link to={`/${props.searchInput}`}>
+                <Link to={`/name/${props.value}`}>
                     <SearchIcon/>
                 </Link>
                 <input type='text' placeholder="Buscar"  onChange={props.onChange} style={styles.input} value={props.search}></input>

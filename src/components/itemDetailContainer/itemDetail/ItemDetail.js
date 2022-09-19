@@ -11,19 +11,18 @@ const ItemDetail = ({product}) => {
     
     const [addItem] = useContext(CartContext)
     const [confirm, setConfirm] = useState(false)
+    const [quantity, setQuantity] = useState(0)
 
-
-    const onAdd = (quantity) => {
-            addItem(product, quantity)
+    const onAdd = (counter) => {
+            //addItem(product, counter)
+            setQuantity(counter)
             Swal.fire(
               'Se ha añadido el producto al carrito',
-              `Se añadieron ${quantity} productos de ${product.name} en tu carrito`,
+              `Se añadieron ${counter} productos de ${product.name} en tu carrito`,
               'success'
             )
-            addItem(product, quantity)
             setConfirm(true)
     }
-
     return (
         
         <div className='container text-center'>
@@ -44,7 +43,7 @@ const ItemDetail = ({product}) => {
                     <div className="pb-3">
                         {confirm ? (
                             <>
-                        <p className='text-center'>Cantidades agregadas al carrito: {product.quantity}</p>
+                        <p className='text-center'>Cantidades agregadas al carrito: {quantity}</p>
                         <Link to={`/cart`} style={styles.link}>
                             <button style={styles.button2}>
                                 <b>IR AL CARRITO</b>
@@ -55,7 +54,7 @@ const ItemDetail = ({product}) => {
                         ): 
                             <ItemCount
                             stock = {product.stock}
-                            initial = {product.quantity}
+                            initial = {quantity}
                             onAdd = {onAdd}
                         />
                         }

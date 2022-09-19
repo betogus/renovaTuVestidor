@@ -10,22 +10,18 @@ import Form from '../form/Form'
 import {Link} from "react-router-dom";
 
 
-
 const NavBar = () => {
 
   //Para la busqueda: 
   const [search, setSearch] = useState()
-  const [searchInput, setSearchInput] = useState();
-
+  
     const onChange = (e) => {
         setSearch(e.target.value);
-        setSearchInput(search.toLowerCase().replace(/ /g, ''))  
     }
 
     const onClick = (e) => {
-            e.preventDefault()
-            setSearch('');
-   
+      e.PreventDefault()
+      setSearch('')
         }
 
 
@@ -37,11 +33,10 @@ const NavBar = () => {
       <div style={styles.logoContainer} href="#home"><img src={Logo} style={styles.logo} alt="logo"></img></div>
       </Link>
         <Container>
-          
+        
           <Form 
           onChange = {onChange}
           onClick = {onClick}
-          searchInput= {searchInput}
           value={search}
           />
           <Nav className="d-flex justify-content-between w-100 align-items-center">
