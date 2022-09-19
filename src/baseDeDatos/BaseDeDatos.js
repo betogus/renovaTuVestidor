@@ -12,19 +12,22 @@ export const usuarios = {
                 img: `${Ropa1Usuario1}`,
                 name: "Camisa",
                 size: "S",
-                price: 2800
+                price: 2800,
+                stock: 6
             },
             {
                 img: `${Ropa2Usuario1}`,
                 name: "Pantalón Jazmín Chebar",
                 size: "M",
-                price: 8900
+                price: 8900,
+                stock: 9
             },
             {
                 img: `${Ropa3Usuario1}`,
                 name: "Jean Levis",
                 size: "Único",
-                price: 2800
+                price: 3600,
+                stock: 2
             },  
             ]
         

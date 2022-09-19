@@ -1,11 +1,12 @@
 export const styles = {
     cardContainer: {
         width: "254px",
-        height: "510px",
-        background: "#f42",
+        height: "550px",
+        background: "white",
         borderRadius: "5px",
         padding: 10,
-        margin: 10
+        margin: 10,
+        boxShadow: "0 3px 10px rgb(0 0 0 / 0.2)"
     },
     logo: {
         width: 52,
@@ -15,6 +16,11 @@ export const styles = {
     imgClothes: {
         objectFit: "contain",
         maxWidth: "98%"
+    },
+    link: {
+        textDecoration: "none",
+        color: "black"
     }
+    
 
 }

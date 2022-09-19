@@ -16,6 +16,24 @@ export const styles = {
         height: "100%",
         objectFit: "contain",
         borderRadius: "1rem",
+    },
+    cartContainer: {
+        width: "50px",
+        height: "50px",
+        borderRadius: "50%",
+        background: "white",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    cart: {
+        width: 25,
+        height: 25
+
+    },
+    link: {
+        textDecoration: "none",
+        color: "white"
     }
 
     
