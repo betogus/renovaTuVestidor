@@ -1,9 +1,13 @@
-import React, {createContext, useState} from 'react';
+import React, {createContext, useState, useContext} from 'react';
 
-export const CartContext = createContext();
+const CartContext = createContext();
 
-export const CartProvider = ({defaultValue= [], children}) => {
-    const [cart, setCart] = useState(defaultValue);
+export const useCartContext = () => {
+    return useContext(CartContext);
+  };
+
+export const CartProvider = ({children}) => {
+    const [cart, setCart] = useState([]);
     const [totalQuantity, setTotalQuantity] = useState(0)
 
     const clear = () => {
@@ -11,33 +15,36 @@ export const CartProvider = ({defaultValue= [], children}) => {
         setTotalQuantity(0)
     }
 
-    const isInCart = (id) => cart.find(product => product.id === id)
+    const isInCart = (id) => {
+        const product = cart.find(product => product.id === id)
+        return product !==undefined
+    }
 
     const removeItem = (id) => {
-        const newCart =[...cart].map(item => item.id !== id);
+        const newCart =[...cart].filter(item => item.id !== id);
         setCart(newCart);
-        setTotalQuantity(-1)
+        setTotalQuantity(totalQuantity-1)
     };
 
-    const addItem = (item, quantity) => {
-        if (isInCart(item.id)) {
+    const addItem = (item) => {
+         if (isInCart(item.id)) {
             const newCart = [...cart]
             for (const product of newCart) {
-                if (product.item.id === item.id) {
-                    product.quantity += quantity;
+                if (product.id === item.id) {
+                    product.quantity += item.quantity;
                 }
             } 
             setCart(newCart)
-        } else {
-            setCart([...cart, {item: item, quantity:quantity}])
-            setTotalQuantity(+1)
-        }
+        } else { 
+            setCart([...cart, item])
+            setTotalQuantity(totalQuantity+1)
+         } 
     }
 
     
 
     return (
-        <CartContext.Provider value={[cart, {addItem}, clear, removeItem, isInCart, totalQuantity]}>
+        <CartContext.Provider value={{cart, addItem, clear, removeItem, isInCart, totalQuantity}}>
             {children}
         </CartContext.Provider>
     )

@@ -1,16 +1,17 @@
-import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom';
-import { CartContext } from '../../cartContext/CartContext'
+import { useCartContext } from '../../cartContext/CartContext'
 
 
 const Cart = () => {
 
-  const {cart, clear, removeItem} = useContext(CartContext);
+  const {cart, clear, removeItem} = useCartContext();
 
   return (
     <div>
+      {console.log(cart)}
       <h1 className="text-center">Carrito</h1>
-      {cart.length > 0 ? (
+      <div className='d-flex justify-content-center'>
+       {cart.length > 0 ? (
         <div>
           <ul>
              {cart.map(product => {
@@ -27,7 +28,8 @@ const Cart = () => {
         <p>No hay productos en el carrito</p>     
         <NavLink to="/" className="nav-enlace">Volver a inicio</NavLink>
       </div>        
-      }
+      } 
+      </div>
     </div>
   )
 }

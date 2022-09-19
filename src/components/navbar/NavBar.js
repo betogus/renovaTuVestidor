@@ -46,7 +46,8 @@ const NavBar = () => {
             
              <Button variant="danger">VENDER</Button>{''}
              <Button variant="danger">INGRESÁ</Button>{''}
-            <CartWidget/>
+             <Link to="/cart" style={styles.link}><CartWidget/></Link>
+            
 
           </Nav>
 

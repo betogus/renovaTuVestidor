@@ -1,28 +1,50 @@
 import {styles} from './ItemDetailStyle';
-import React, {useState, useContext} from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
+import React, {useState} from 'react'
 import ItemCount from '../../itemCount/ItemCount';
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom';
-import { CartContext } from '../../../cartContext/CartContext';
+import { useCartContext } from '../../../cartContext/CartContext';
 
 
 const ItemDetail = ({product}) => {
     
-    const [addItem] = useContext(CartContext)
+    const {addItem, cart, isInCart} = useCartContext()
     const [confirm, setConfirm] = useState(false)
     const [quantity, setQuantity] = useState(0)
 
-    const onAdd = (counter) => {
-            //addItem(product, counter)
-            setQuantity(counter)
+    const onAdd = (quantity) => {
+        const productInCart = [...cart]
+        if (isInCart(product.id)) {
+            for (const itemCart of productInCart) {
+                if (itemCart.quantity + quantity <= itemCart.stock) {
+                addItem({...product, quantity})
+                setQuantity( itemCart.quantity)
+                Swal.fire(
+                'Se ha añadido el producto al carrito',
+                `Se añadieron ${quantity} productos de ${product.name} en tu carrito`,
+                'success'
+                )
+                setConfirm(true)
+                } else {
+                    Swal.fire(
+                    'No hay suficiente stock',
+                    '',
+                    'error'
+                    )
+                }
+            } 
+        } else {
+            addItem({...product, quantity})
+            setQuantity(quantity)
             Swal.fire(
-              'Se ha añadido el producto al carrito',
-              `Se añadieron ${counter} productos de ${product.name} en tu carrito`,
-              'success'
+            'Se ha añadido el producto al carrito',
+            `Se añadieron ${quantity} productos de ${product.name} en tu carrito`,
+            'success'
             )
             setConfirm(true)
-    }
+        }
+    }    
+
     return (
         
         <div className='container text-center'>
@@ -37,8 +59,8 @@ const ItemDetail = ({product}) => {
                     <h5>Talle {product.size}</h5>
                     <p>{product.detail}</p>
                     <div className='d-flex justify-content-center'>
-                        <button style={styles.button1}>Ofertar<FontAwesomeIcon icon="fa-sharp fa-solid fa-gavel" /></button>
-                        <button style={styles.button1}>Comentar<FontAwesomeIcon icon="fa-regular fa-comment" /></button>
+                        <button style={styles.button1}>Ofertar</button>
+                        <button style={styles.button1}>Comentar</button>
                     </div>
                     <div className="pb-3">
                         {confirm ? (

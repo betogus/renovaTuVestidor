@@ -1,9 +1,8 @@
 
-import React, {useState, useEffect, useContext} from "react";
+import React, {useState, useEffect} from "react";
 import ItemDetail from "./itemDetail/ItemDetail" 
 import Spinner from "../spinner/Spinner";
 import { useParams } from "react-router-dom"; //esto me permite asignarle a una variable, el id que le pasamos a itemDetailContainer desde el itemList
-import { ItemsContext } from "../../ItemsContext";
 import BaseDeDatos from "../../baseDeDatos/BaseDeDatos.json"
 
 const ItemDetailContainer = () => {
@@ -26,7 +25,7 @@ const ItemDetailContainer = () => {
   }, [id, items])
   return (
     <div className="d-flex justify-content-center">
-      { (isLoading) ? <Spinner/> : <ItemDetail product = {item} key={item.key} />}
+      { isLoading ? <Spinner/> : <ItemDetail product = {item} key={item.key} />}
     </div>
   )
 }
