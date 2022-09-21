@@ -2,10 +2,14 @@
 import React, {useState, useEffect} from "react";
 import ItemDetail from "./itemDetail/ItemDetail" 
 import Spinner from "../spinner/Spinner";
-import { useParams } from "react-router-dom"; //esto me permite asignarle a una variable, el id que le pasamos a itemDetailContainer desde el itemList
+import { useParams } from "react-router-dom"; 
 import BaseDeDatos from "../../baseDeDatos/BaseDeDatos.json"
 
+
+
 const ItemDetailContainer = () => {
+  
+
   const [isLoading, setIsLoading] = useState(true)
   const [item, setItem] = useState({});
   const [items, setItems] = useState(BaseDeDatos);

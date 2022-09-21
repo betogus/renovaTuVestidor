@@ -17,14 +17,15 @@ const ItemDetail = ({product}) => {
         if (isInCart(product.id)) {
             for (const itemCart of productInCart) {
                 if (itemCart.quantity + quantity <= itemCart.stock) {
-                addItem({...product, quantity})
-                setQuantity( itemCart.quantity)
-                Swal.fire(
-                'Se ha añadido el producto al carrito',
-                `Se añadieron ${quantity} productos de ${product.name} en tu carrito`,
-                'success'
-                )
-                setConfirm(true)
+                    console.log(quantity)
+                    addItem({...product, quantity})
+                    setQuantity( itemCart.quantity)
+                    Swal.fire(
+                    'Se ha añadido el producto al carrito',
+                    `Se añadieron ${quantity} productos de ${product.name} en tu carrito`,
+                    'success'
+                    )
+                    setConfirm(true)
                 } else {
                     Swal.fire(
                     'No hay suficiente stock',

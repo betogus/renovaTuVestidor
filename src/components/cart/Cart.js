@@ -1,26 +1,20 @@
 import { NavLink } from 'react-router-dom';
 import { useCartContext } from '../../cartContext/CartContext'
+import ItemCart from './ItemCart';
 
 
 const Cart = () => {
 
-  const {cart, clear, removeItem} = useCartContext();
+  const {cart, clear, totalPrice} = useCartContext();
 
   return (
     <div>
-      {console.log(cart)}
       <h1 className="text-center">Carrito</h1>
       <div className='d-flex justify-content-center'>
        {cart.length > 0 ? (
         <div>
-          <ul>
-             {cart.map(product => {
-                 return <li key={product.id}>
-                             {product.name} - ${product.price} - {product.quantity}
-                             <button onClick={() => removeItem(product.id)}>Borrar</button> 
-                         </li>
-             })}
-          </ul>
+             {cart.map(product => <ItemCart key={product.id} product={product} />)}
+          <p>TOTAL: {totalPrice}</p>
           <button onClick={clear}>Limpiar Carrito</button>
         </div>
       ) :
