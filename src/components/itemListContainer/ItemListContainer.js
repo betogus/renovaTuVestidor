@@ -1,6 +1,6 @@
 import ItemList from "./itemList/ItemList";
 import { useParams } from "react-router-dom"; 
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import Spinner from "../spinner/Spinner";
 import { collection, query, where, getDocs} from 'firebase/firestore';
 import { db } from '../../firebase/firebaseConfig'
@@ -8,7 +8,6 @@ import { db } from '../../firebase/firebaseConfig'
 const ItemListContainer = () => {
   let {categoryId, nameId, nameSearched} = useParams();
   const [items, setItems] = useState([])
-  const [itemsFiltered, setItemsFiltered] = useState([]);
   const [isLoading, setIsLoading] = useState(false)
   
   const getProducts = async (param1, param2) => {
@@ -49,7 +48,7 @@ const ItemListContainer = () => {
           setIsLoading(false)
         }
       }, 2000)
-    }, [ nameId || categoryId || nameSearched])
+    }, [ nameId,  categoryId, nameSearched])
 
   return (
     <div className="d-flex">
