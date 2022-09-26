@@ -16,10 +16,10 @@ const NavBar = () => {
   const [search, setSearch] = useState()
   
     const onChange = (e) => {
-        setSearch(e.target.value);
+      setSearch(e.target.value.toLowerCase().replace(/ /g, ''));
     }
 
-    const onClick = (e) => {
+    const onSubmit = (e) => {
       e.PreventDefault()
       setSearch('')
         }
@@ -36,7 +36,7 @@ const NavBar = () => {
         
           <Form 
           onChange = {onChange}
-          onClick = {onClick}
+          onSubmit = {onSubmit}
           value={search}
           />
           <Nav className="d-flex justify-content-between w-100 align-items-center">
@@ -45,7 +45,8 @@ const NavBar = () => {
             <Link to="/category/accesorios" style={styles.link}>Accesorios</Link>
             
              <Button variant="danger">VENDER</Button>{''}
-             <Button variant="danger">INGRESÁ</Button>{''}
+
+             <Link to="/signup" style={styles.link}><Button variant="danger">INGRESÁ</Button>{''}</Link>
              <Link to="/cart" style={styles.link}><CartWidget/></Link>
             
 

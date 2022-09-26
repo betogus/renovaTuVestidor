@@ -6,8 +6,9 @@ import { Link } from 'react-router-dom';
 const Form = (props) => {
     
     return (
-        <form style={styles.form}>
+        <form style={styles.form} onSubmit={props.onSubmit}>
             <div style={styles.container}>
+                
                 <Link to={`/name/${props.value}`}>
                     <SearchIcon/>
                 </Link>

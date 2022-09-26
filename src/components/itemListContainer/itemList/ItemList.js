@@ -10,7 +10,7 @@ const ItemList = ({items}) => {
     return (
         
         <> 
-        {items.map((item) =>  <Item item={item} key={item.id}/>)}   
+        {items.length !== 0 ? items.map((item) =>  <Item item={item} key={item.id}/>) : <div className='w-100 mt-5'><h3 className='text-center'>No hay coincidencias con su búsqueda</h3></div>}   
         </>
     )
 }

@@ -17,7 +17,6 @@ const ItemDetail = ({product}) => {
         if (isInCart(product.id)) {
             for (const itemCart of productInCart) {
                 if (itemCart.quantity + quantity <= itemCart.stock) {
-                    console.log(quantity)
                     addItem({...product, quantity})
                     setQuantity( itemCart.quantity)
                     Swal.fire(
