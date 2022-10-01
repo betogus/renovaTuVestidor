@@ -1,6 +1,5 @@
 import React from 'react'
-import { useCartContext } from '../../cartContext/CartContext'
-import { styles } from './ItemCartStyle';
+import { useCartContext } from '../../Context/cartContext/CartContext'
 
 
 

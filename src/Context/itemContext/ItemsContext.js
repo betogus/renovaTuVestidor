@@ -1,6 +1,6 @@
 import React, {createContext, useState, useEffect} from 'react';
 import { collection, query, where, getDocs} from 'firebase/firestore';
-import { db } from '../firebase/firebaseConfig';
+import { db } from '../../firebase/firebaseConfig';
 
 // 1 - Creamos el contexto y el state
 export const ItemsContext = createContext();
@@ -12,7 +12,6 @@ const getProducts = async () => {
     querySnapshot.forEach((doc) => {
       docs.push({...doc.data(), id: doc.id})
     });
-    console.log()
   }
   
 // 2 - Creamos el componente provider

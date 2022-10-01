@@ -44,9 +44,9 @@ const NavBar = () => {
             <Link to="/category/kids" style={styles.link}>Kids</Link>
             <Link to="/category/accesorios" style={styles.link}>Accesorios</Link>
             
-             <Button variant="danger">VENDER</Button>{''}
+             <Link to='/vender' style={styles.link}><Button variant="danger">VENDER</Button></Link>
 
-             <Link to="/signup" style={styles.link}><Button variant="danger">INGRESÁ</Button>{''}</Link>
+             <Link to="/ingresa" style={styles.link}><Button variant="danger">INGRESÁ</Button></Link>
              <Link to="/cart" style={styles.link}><CartWidget/></Link>
             
 

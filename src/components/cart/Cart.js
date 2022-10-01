@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { useCartContext } from '../../cartContext/CartContext'
+import { useCartContext } from '../../Context/cartContext/CartContext'
 import ItemCart from './ItemCart';
 
 
@@ -14,7 +14,7 @@ const Cart = () => {
        {cart.length > 0 ? (
         <div>
              {cart.map(product => <ItemCart key={product.id} product={product} />)}
-          <p>TOTAL: {totalPrice}</p>
+          <p>TOTAL: ${totalPrice()}</p>
           <button onClick={clear}>Limpiar Carrito</button>
         </div>
       ) :

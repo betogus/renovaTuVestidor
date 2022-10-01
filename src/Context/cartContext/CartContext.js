@@ -11,8 +11,11 @@ export const CartProvider = ({children}) => {
     const [totalQuantity, setTotalQuantity] = useState(0);
 
     const totalPrice = () => {
-        cart.reduce((acc, product) => acc + product.quantity * product.price, 0)
+        return cart.reduce((acc, product) => acc + product.quantity * product.price, 0)
+
     }
+    
+    
 
     const clear = () => {
         setCart([])

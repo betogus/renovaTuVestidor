@@ -1,6 +1,6 @@
 import { styles } from './NavBarStyles'
 import Cart from './cart-shopping-solid.svg'
-import { useCartContext } from "../../cartContext/CartContext";
+import { useCartContext } from "../../Context/cartContext/CartContext";
 
 
 function CartWidget () {

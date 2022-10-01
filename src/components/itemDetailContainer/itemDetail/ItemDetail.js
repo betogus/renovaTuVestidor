@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import ItemCount from '../../itemCount/ItemCount';
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom';
-import { useCartContext } from '../../../cartContext/CartContext';
+import { useCartContext } from '../../../Context/cartContext/CartContext';
 
 
 const ItemDetail = ({product}) => {

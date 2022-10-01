@@ -1,10 +1,17 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { styles } from './signupStyle'
 import Logo from '../navbar/logo.png'
 import { Box } from '@mui/system'
 import { Fab, TextField } from '@mui/material'
 import * as yup from 'yup';
 import { Formik } from 'formik';
+import { addDoc, collection } from 'firebase/firestore'
+import { db } from '../../firebase/firebaseConfig'
+import "toastify-js/src/toastify.css"
+import Toastify from 'toastify-js'
+import { useNavigate } from 'react-router-dom';
+
+
 
 const yupSchema = yup
 	.object()
@@ -22,16 +29,37 @@ const yupSchema = yup
 	})
 	.required();
  
-  const submitHandler = (values, resetForm) => {
-    if (values.password === values.verifyPassword) {
-      console.log(values);
-      resetForm()
-    } 
-  };
+  
 
 const Signup = () => {
+  const [userId, setUserId] = useState();
+  const navigate = useNavigate()
+
+  const submitHandler = async (values, resetForm) => {
+    if (values.password === values.verifyPassword) {
+      const docRef = await addDoc(collection(db, 'users'), {values});
+      setUserId(docRef.id)
+      resetForm()
+      Toastify({
+        text: `¡Registro completo! Tu id es ${userId}`,
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "left", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+        onClick: function(){} // Callback after click
+      }).showToast();
+      navigate('/')
+    } 
+  };
   return (
+    
     <div style={styles.container}>
+
       <div style={styles.imgContainer}>
         <img src={Logo} alt='logo'style={styles.logo}/>
         <h1 style={styles.h1}>Vendé lo que no usás</h1>
@@ -141,6 +169,7 @@ const Signup = () => {
 
             />
             {errors.verifyPassword && touched.verifyPassword && errors.verifyPassword}
+            
             <Fab 
             disabled={!(isValid && dirty)}
             onSubmit={handleSubmit}
