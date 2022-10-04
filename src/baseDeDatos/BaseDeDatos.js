@@ -3,6 +3,7 @@ import Ropa1Usuario1 from './clothes1.jpeg';
 import Ropa2Usuario1 from './clothes2.jpeg';
 import Ropa3Usuario1 from './clothes3.jpeg';
 
+
 export const usuarios = {
     usuario1 : {
         logo: `${LogoUsuario1}`,
