@@ -7,22 +7,22 @@ import Button from 'react-bootstrap/Button';
 import { styles } from './NavBarStyles';
 import CartWidget from './CartWidget';
 import Form from '../form/Form'
-import {Link} from "react-router-dom";
-
+import {Link, useNavigate} from "react-router-dom";
+import UserWidget from './UserWidget';
 
 const NavBar = () => {
 
-  //Para la busqueda: 
+  const navigate = useNavigate()
   const [search, setSearch] = useState()
-  
     const onChange = (e) => {
       setSearch(e.target.value.toLowerCase().replace(/ /g, ''));
     }
 
-    const onSubmit = (e) => {
-      e.PreventDefault()
+     const onSubmit = (e) => {
+      navigate(`/name/${search}`)
       setSearch('')
-        }
+
+     }
 
 
     
@@ -36,8 +36,8 @@ const NavBar = () => {
         
           <Form 
           onChange = {onChange}
-          onSubmit = {onSubmit}
-          value={search}
+           onSubmit = {onSubmit}
+           value={search}
           />
           <Nav className="d-flex justify-content-between w-100 align-items-center">
             <Link to="/category/adulto" style={styles.link}>Adulto</Link>
@@ -46,9 +46,9 @@ const NavBar = () => {
             
              <Link to='/vender' style={styles.link}><Button variant="danger">VENDER</Button></Link>
 
-             <Link to="/ingresa" style={styles.link}><Button variant="danger">INGRESÁ</Button></Link>
+             <Link to="/login" style={styles.link}><Button variant="danger">INGRESÁ</Button></Link>
              <Link to="/cart" style={styles.link}><CartWidget/></Link>
-            
+            <Link to='/user' style={styles.link}><UserWidget/></Link>
 
           </Nav>
 

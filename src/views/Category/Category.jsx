@@ -19,6 +19,7 @@ const Category = () => {
     })
     setItems(docs)
   }
+  
   useEffect(()=> {
     getProducts() 
     setIsLoading(true)

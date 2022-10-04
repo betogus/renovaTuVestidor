@@ -39,7 +39,9 @@ const ItemListContainer = () => {
 
   return (
     <div className="d-flex">
-      {isLoading ? <div className="justify-content-center w-100"><Spinner/></div> : <ItemList items={items}/>}
+      { isLoading ? <div className="justify-content-center w-100"><Spinner/></div> :
+        <div className="text-center w-100">{nameSearched && <h3>Resultado de la búsqueda: "{nameSearched}"</h3>}
+        <ItemList items={items}/></div>}
     </div>
   )
 }

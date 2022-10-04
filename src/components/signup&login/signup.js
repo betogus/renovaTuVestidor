@@ -1,16 +1,16 @@
 import React, {useState} from 'react'
-import { styles } from './signupStyle'
+import { styles } from './signup&loginStyle'
 import Logo from '../navbar/logo.png'
 import { Box } from '@mui/system'
 import { Fab, TextField } from '@mui/material'
 import * as yup from 'yup';
 import { Formik } from 'formik';
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection, query, where, getDocs } from 'firebase/firestore'
 import { db } from '../../firebase/firebaseConfig'
 import "toastify-js/src/toastify.css"
 import Toastify from 'toastify-js'
 import { useNavigate } from 'react-router-dom';
-
+import { useUserContext } from '../../Context/userContext/UserContext'
 
 
 const yupSchema = yup
@@ -24,6 +24,7 @@ const yupSchema = yup
 			.required('El apellido es requerido'),
 		email: yup.string().email('Debe ser un email válido').min(4, 'El email debe tener al menos 4 caracteres').required('El email es requerido'),
     dressingRoomNickname: yup.string().min(4, 'El apodo debe tener al menos 4 caracteres').required('El apodo es requerido'),
+    phone: yup.number().min(7, 'el número de teléfono debe tener al menos 7 caracteres' ).required('el teléfono es requerido'),
     password: yup.string().min(6, 'La contraseña debe tener al menos 6 caracteres').required('La contraseña es requerida'),
     verifyPassword: yup.string().min(6, 'La contraseña debe tener al menos 6 caracteres').required('debe verificar su contraseña')
 	})
@@ -32,30 +33,43 @@ const yupSchema = yup
   
 
 const Signup = () => {
-  const [userId, setUserId] = useState();
+  const {user, setUser} = useUserContext();
   const navigate = useNavigate()
+  const [invalidUser, setInvalidUser] = useState(false)
 
   const submitHandler = async (values, resetForm) => {
     if (values.password === values.verifyPassword) {
-      const docRef = await addDoc(collection(db, 'users'), {values});
-      setUserId(docRef.id)
-      resetForm()
-      Toastify({
-        text: `¡Registro completo! Tu id es ${userId}`,
-        duration: 3000,
-        newWindow: true,
-        close: true,
-        gravity: "top", // `top` or `bottom`
-        position: "left", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
-        style: {
-          background: "linear-gradient(to right, #00b09b, #96c93d)",
-        },
-        onClick: function(){} // Callback after click
-      }).showToast();
-      navigate('/')
-    } 
+      const q = query(collection(db, 'users'), where ('values.email', '==', values.email))
+      const querySnapshot = await getDocs(q)
+      const docs = []
+      querySnapshot.forEach((doc) => {
+        docs.push({...doc.data()})
+      });
+      if (!docs[0]) {
+        const docRef = await addDoc(collection(db, 'users'), {...values});
+
+        setUser({...values})
+        resetForm()
+        Toastify({
+          text: `¡Registro completo! Tu id es ${docRef.id}`,
+          duration: 3000,
+          newWindow: true,
+          close: true,
+          gravity: "top", // `top` or `bottom`
+          position: "left", // `left`, `center` or `right`
+          stopOnFocus: true, // Prevents dismissing of toast on hover
+          style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+          },
+          onClick: function(){} // Callback after click
+        }).showToast();
+        navigate('/')
+      } else {
+        setInvalidUser(true)
+      }
+    }    
   };
+
   return (
     
     <div style={styles.container}>
@@ -144,6 +158,19 @@ const Signup = () => {
             {errors.dressingRoomNickname && touched.dressingRoomNickname && errors.dressingRoomNickname}
 
             <TextField 
+            id="standard-basic7" 
+            label="Teléfono" 
+            type='number'
+            variant="standard" 
+            name='phone'
+            onChange={handleChange}
+					  value={values.phone}
+					  onBlur={handleBlur}
+            style={styles.textField}
+            />
+            {errors.phone && touched.phone && errors.phone}
+
+            <TextField 
             id="standard-basic5" 
             label="Contraseña" 
             variant="standard" 
@@ -181,6 +208,7 @@ const Signup = () => {
               CREAR CUENTA</Fab>
             <p>Al crear la cuenta, aceptás los <a href="#">Términos y condiciones</a></p>
             { values.password !== values.verifyPassword && <p>Las contraseñas no coinciden</p>}
+            {invalidUser && <p>El mail ya se encuentra registrado</p>}
           </Box>
 	      )}
         </Formik>
