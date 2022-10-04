@@ -1,0 +1,5 @@
+Crear un userContext donde guardamos los datos del usuario
+
+Hacer la compra y cargarlo en el usuario
+
+Crear un about y un contact
