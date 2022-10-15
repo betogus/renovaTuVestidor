@@ -21,6 +21,6 @@ Las dependencias que se utilizaron para este proyecto son:
 - [ ] FontAwesome
 - [ ] SweetAlert
 - [ ] Toasify
-
+Link al gif: <a href="">Aquí
 <img src="src/assets/presentacion.png"/>
 
