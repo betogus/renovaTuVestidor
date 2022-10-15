@@ -22,5 +22,5 @@ Las dependencias que se utilizaron para este proyecto son:
 - [ ] SweetAlert
 - [ ] Toasify
 
-
+<img src="src/assets/presentacion.png"/>
 
