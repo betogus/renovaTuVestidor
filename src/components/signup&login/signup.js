@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
-import { styles } from './signup&loginStyle'
-import Logo from '../navbar/logo.png'
+import { styles } from './Signup&loginStyle'
+import Logo from '../../assets/logo.png'
 import { Box } from '@mui/system'
 import { Fab, TextField } from '@mui/material'
 import * as yup from 'yup';
 import { Formik } from 'formik';
 import { addDoc, collection, query, where, getDocs } from 'firebase/firestore'
-import { db } from '../../firebase/firebaseConfig'
+import { db } from '../../firebase/FirebaseConfig'
 import "toastify-js/src/toastify.css"
 import Toastify from 'toastify-js'
 import { useNavigate } from 'react-router-dom';
@@ -24,22 +24,20 @@ const yupSchema = yup
 			.required('El apellido es requerido'),
 		email: yup.string().email('Debe ser un email válido').min(4, 'El email debe tener al menos 4 caracteres').required('El email es requerido'),
     dressingRoomNickname: yup.string().min(4, 'El apodo debe tener al menos 4 caracteres').required('El apodo es requerido'),
-    phone: yup.number().min(7, 'el número de teléfono debe tener al menos 7 caracteres' ).required('el teléfono es requerido'),
+    phone: yup.string().min(7, 'el número de teléfono debe tener al menos 7 caracteres' ).required('el teléfono es requerido'),
     password: yup.string().min(6, 'La contraseña debe tener al menos 6 caracteres').required('La contraseña es requerida'),
     verifyPassword: yup.string().min(6, 'La contraseña debe tener al menos 6 caracteres').required('debe verificar su contraseña')
 	})
-	.required();
- 
-  
+	.required();  
 
 const Signup = () => {
-  const {user, setUser} = useUserContext();
+  
+  const { setUser} = useUserContext();
   const navigate = useNavigate()
   const [invalidUser, setInvalidUser] = useState(false)
-
   const submitHandler = async (values, resetForm) => {
     if (values.password === values.verifyPassword) {
-      const q = query(collection(db, 'users'), where ('values.email', '==', values.email))
+      const q = query(collection(db, 'users'), where ('email', '==', values.email))
       const querySnapshot = await getDocs(q)
       const docs = []
       querySnapshot.forEach((doc) => {
@@ -47,8 +45,9 @@ const Signup = () => {
       });
       if (!docs[0]) {
         const docRef = await addDoc(collection(db, 'users'), {...values});
+        await setUser({...values, id: docRef.id})
+        localStorage.setItem("usuario", JSON.stringify({...values, id: docRef.id}))
 
-        setUser({...values})
         resetForm()
         Toastify({
           text: `¡Registro completo! Tu id es ${docRef.id}`,
@@ -73,7 +72,6 @@ const Signup = () => {
   return (
     
     <div style={styles.container}>
-
       <div style={styles.imgContainer}>
         <img src={Logo} alt='logo'style={styles.logo}/>
         <h1 style={styles.h1}>Vendé lo que no usás</h1>
@@ -206,7 +204,7 @@ const Signup = () => {
             style={{width:"70%"}}
             >
               CREAR CUENTA</Fab>
-            <p>Al crear la cuenta, aceptás los <a href="#">Términos y condiciones</a></p>
+            <p>Al crear la cuenta, aceptás los <span style={{cursor: "pointer", textDecoration: "underline"}}>Términos y condiciones</span></p>
             { values.password !== values.verifyPassword && <p>Las contraseñas no coinciden</p>}
             {invalidUser && <p>El mail ya se encuentra registrado</p>}
           </Box>

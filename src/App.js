@@ -8,7 +8,7 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 //COMPONENTS
 import NavBar from "./components/navbar/NavBar"
 import Login from "./components/signup&login/Login";
-import Signup from "./components/signup&login/signup";
+import Signup from "./components/signup&login/Signup";
 
 //VIEWS
 import Home from "./views/Home/Home";

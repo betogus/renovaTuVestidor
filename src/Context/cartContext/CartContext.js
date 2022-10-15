@@ -8,18 +8,19 @@ export const useCartContext = () => {
 
 export const CartProvider = ({children}) => {
     const [cart, setCart] = useState([]);
-    const [totalQuantity, setTotalQuantity] = useState(0);
 
     const totalPrice = () => {
         return cart.reduce((acc, product) => acc + product.quantity * product.price, 0)
 
     }
     
+    const totalQuantity = () => {
+        return cart.reduce((acc, product) => acc + product.quantity, 0)
+    }
     
 
     const clear = () => {
         setCart([])
-        setTotalQuantity(0)
     }
 
     const isInCart = (id) => {
@@ -30,7 +31,6 @@ export const CartProvider = ({children}) => {
     const removeItem = (id) => {
         const newCart =[...cart].filter(item => item.id !== id);
         setCart(newCart);
-        setTotalQuantity(totalQuantity-1)
     };
 
     const addItem = (item) => {
@@ -44,7 +44,6 @@ export const CartProvider = ({children}) => {
             setCart(newCart)
         } else { 
             setCart([...cart, item])
-            setTotalQuantity(totalQuantity+1)
         } 
     }
 

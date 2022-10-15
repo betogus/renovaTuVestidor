@@ -2,12 +2,12 @@ import React, {useState} from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Logo from './logo.png';
+import Logo from '../../assets/logo.png';
 import Button from 'react-bootstrap/Button';
 import { styles } from './NavBarStyles';
 import CartWidget from './CartWidget';
 import Form from '../form/Form'
-import {Link, useNavigate} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import UserWidget from './UserWidget';
 
 const NavBar = () => {
@@ -24,34 +24,27 @@ const NavBar = () => {
 
      }
 
-
-    
   return (
     <>
       <Navbar bg="black" variant="dark">
-        <Link to="/" style={styles.link}>
+        <NavLink to="/" style={styles.NavLink}>
       <div style={styles.logoContainer} href="#home"><img src={Logo} style={styles.logo} alt="logo"></img></div>
-      </Link>
-        <Container>
-        
+      </NavLink>
+        <Container>  
           <Form 
           onChange = {onChange}
            onSubmit = {onSubmit}
            value={search}
           />
-          <Nav className="d-flex justify-content-between w-100 align-items-center">
-            <Link to="/category/adulto" style={styles.link}>Adulto</Link>
-            <Link to="/category/kids" style={styles.link}>Kids</Link>
-            <Link to="/category/accesorios" style={styles.link}>Accesorios</Link>
-            
-             <Link to='/vender' style={styles.link}><Button variant="danger">VENDER</Button></Link>
-
-             <Link to="/login" style={styles.link}><Button variant="danger">INGRESÁ</Button></Link>
-             <Link to="/cart" style={styles.link}><CartWidget/></Link>
-            <Link to='/user' style={styles.link}><UserWidget/></Link>
-
+          <Nav className="d-flex justify-content-between w-100 align-items-center" >
+            <NavLink to="/category/adulto" style={({isActive})=> isActive ? styles.active : styles.NavLink}>Adulto</NavLink>
+            <NavLink to="/category/kids" style={({isActive})=> isActive ? styles.active : styles.NavLink}>Kids</NavLink>
+            <NavLink to="/category/accesorios" style={({isActive})=> isActive ? styles.active : styles.NavLink}>Accesorios</NavLink>      
+             <NavLink to='/vender' style={({isActive})=> isActive ? styles.active : styles.NavLink}><Button variant="danger">VENDER</Button></NavLink>
+             <NavLink to="/login" style={({isActive})=> isActive ? styles.active : styles.NavLink}><Button variant="danger">INGRESÁ</Button></NavLink>
+             <NavLink to="/cart" style={({isActive})=> isActive ? styles.active : styles.NavLink}><CartWidget/></NavLink>
+            <NavLink to='/user' style={({isActive})=> isActive ? styles.active : styles.NavLink}><UserWidget/></NavLink>
           </Nav>
-
         </Container>
       </Navbar>
     </>

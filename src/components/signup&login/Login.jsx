@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import { styles } from './signup&loginStyle'
-import Logo from '../navbar/logo.png'
+import { styles } from './Signup&loginStyle'
+import Logo from '../../assets/logo.png'
 import { Box } from '@mui/system'
 import { Fab, TextField } from '@mui/material'
 import * as yup from 'yup';
@@ -9,11 +9,11 @@ import {collection, getDocs, query, where} from 'firebase/firestore'
 import "toastify-js/src/toastify.css"
 import Toastify from 'toastify-js'
 import { Link, useNavigate } from 'react-router-dom';
-import { db } from '../../firebase/firebaseConfig'
+import { db } from '../../firebase/FirebaseConfig'
 import { useUserContext } from '../../Context/userContext/UserContext'
 
 const Login = () => {
-  const {user, setUser} = useUserContext();
+  const { setUser} = useUserContext();
   const navigate = useNavigate()
   const [invalidUser, setInvalidUser] = useState(false)
 
@@ -36,19 +36,20 @@ const Login = () => {
         resetForm()
         if (docs[0] && docs[0].password === values.password) {
           
-          setUser(docs[0])
+          setUser({...docs[0], id: querySnapshot.docs[0].id})
+          localStorage.setItem('usuario',JSON.stringify({...docs[0], id: querySnapshot.docs[0].id}) )
           Toastify({
             text: `Bienvenid@ ${docs[0].name}`,
             duration: 3000,
             newWindow: true,
             close: true,
-            gravity: "top", // `top` or `bottom`
-            position: "left", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
+            gravity: "top", 
+            position: "left", 
+            stopOnFocus: true, 
             style: {
               background: "linear-gradient(to right, #00b09b, #96c93d)",
             },
-            onClick: function(){} // Callback after click
+            onClick: function(){} 
           }).showToast();
           navigate('/') 
         } else {
@@ -56,11 +57,9 @@ const Login = () => {
           setInvalidUser(true)
         }
   };
-
-  
+ 
   return (
     <div style={styles.container}>
-      {console.log(user)}
     <div style={styles.imgContainer}>
       <img src={Logo} alt='logo'style={styles.logo}/>
       <h1 style={styles.h1}>Vendé lo que no usás</h1>

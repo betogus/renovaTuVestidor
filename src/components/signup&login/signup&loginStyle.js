@@ -1,4 +1,4 @@
-import registerBackground from './registerBackground.jpg'
+import registerBackground from '../../assets/registerBackground.jpg'
 
 export const styles = {
     imgContainer: {

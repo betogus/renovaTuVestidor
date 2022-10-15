@@ -11,7 +11,6 @@ const Cart = () => {
 
   return (
     <div>
-      
       <h1 className="text-center">Carrito</h1>
       <div className='d-flex justify-content-center'>
        {cart.length > 0 ? (
@@ -31,6 +30,5 @@ const Cart = () => {
     </div>
   )
 }
-
 
 export default Cart

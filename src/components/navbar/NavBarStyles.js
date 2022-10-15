@@ -1,4 +1,3 @@
-
 export const styles = {
     logoContainer: {
         position: "absolute",
@@ -8,8 +7,7 @@ export const styles = {
         height: "80px",
         background: "black",
         borderRadius: "1rem",
-        padding: "5px",
-        
+        padding: "5px",     
     },
     logo: {
         width: "100%",
@@ -29,12 +27,15 @@ export const styles = {
     cart: {
         width: 25,
         height: 25
-
     },
-    link: {
+   
+    
+    NavLink: {
         textDecoration: "none",
         color: "white"
+    },
+    active: {
+      color: "blue",
+      textDecoration: "none"
     }
-
-    
-}
+  }

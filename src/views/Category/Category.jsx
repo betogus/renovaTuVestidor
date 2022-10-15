@@ -1,6 +1,6 @@
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import React, {useState, useEffect } from 'react'
-import { db } from '../../firebase/firebaseConfig';
+import { db } from '../../firebase/FirebaseConfig';
 import Spinner from '../../components/spinner/Spinner';
 import ItemList from '../../components/itemListContainer/itemList/ItemList';
 import { useParams } from "react-router-dom"; 

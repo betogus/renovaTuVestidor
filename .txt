@@ -1,0 +1,2 @@
+# pasar el key de firestore en un archivo .env
+# arreglar la fecha de la orden de compra

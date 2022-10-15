@@ -10,10 +10,7 @@ const ItemCount = ({initial, stock, onAdd}) => {
     const handlerCounterUp = () => setCounter(counter + 1);
         
     const handlerCounterDown = () => setCounter(counter-1) 
-
-  
-
-
+ 
   return (
     <div>
         <ButtonGroup

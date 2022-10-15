@@ -1,5 +1,5 @@
 import { styles } from './NavBarStyles'
-import Cart from './cart-shopping-solid.svg'
+import Cart from '../../assets/cart-shopping-solid.svg'
 import { useCartContext } from "../../Context/cartContext/CartContext";
 
 
