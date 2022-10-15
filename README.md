@@ -20,7 +20,7 @@ Las dependencias que se utilizaron para este proyecto son:
 - [ ] Bootstrap
 - [ ] FontAwesome
 - [ ] SweetAlert
-- [ ] Toasify
-Link al gif: <a href="">Aquí
+- [ ] Toasify<br/>
+Link al gif: <a href="React App - Google Chrome 2022-10-14 21-18-15.gif">Aquí</a>
 <img src="src/assets/presentacion.png"/>
 
