@@ -18,7 +18,7 @@ Las dependencias que se utilizaron para este proyecto son:
 - [ ] Bootstrap
 - [ ] FontAwesome
 
-
+<span> Click <a href="React App - Google Chrome 2022-10-14 21-18-15.gif">Aquí</a> para ver la animación .gif de la aplicación</span>
 <img src="./src/assets/presentacion.png"/>
 
 
